@@ -1,0 +1,6 @@
+Joe	3	50	I
+Sue	1	10	I
+Saad	2	30	O
+Talha	1	2	O
+Asaal	3	42	I
+Hashir	2	33	O
