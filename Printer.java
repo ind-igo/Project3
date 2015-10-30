@@ -7,21 +7,21 @@ import java.util.List;
 
 public class Printer
 {
+	@SuppressWarnings("rawtypes")
 	static BinaryHeap heap;
 	
 	public static void main(String[] args)
 	{
-//		PrintJob job1 = new PrintJob("Joe", 3, 50);
-//		PrintJob job2 = new PrintJob("Sue", 1, 10);
-//
-//		System.out.println(job1.toString());
-//		System.out.println(job2.toString());
-//		System.out.println(compareJobs(job1, job2));
-
 		popHeap();
+		
+		while(!heap.isEmpty())
+		{
+			System.out.println(heap.findMin().toString());
+			heap.deleteMin();
+		}
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private static void popHeap()
 	{
 		BufferedReader readbuffer;
@@ -48,14 +48,8 @@ public class Printer
 			}
 			
 			PrintJob[] jobs = new PrintJob[jobsTemp.size()];
-//			jobs = jobsTemp.toArray(jobs);
 			
-			heap = new BinaryHeap(jobsTemp.size());
-			
-			for(PrintJob x : jobsTemp)
-			{
-				heap.insert(x);
-			}
+			heap = new BinaryHeap(jobsTemp.toArray(jobs));
 			
 			System.out.println(heap.isEmpty());
 			
@@ -72,17 +66,5 @@ public class Printer
 			e.printStackTrace();
 		}
 		
-	}
-
-	public static String compareJobs(PrintJob x, PrintJob y)
-	{
-		int result = x.getJobPriority().compareTo(y.getJobPriority());
-
-		if (result < 0)
-			return "Job 1's job priority was less than job 2's job priority.";
-		else if (result == 0)
-			return "The 2 jobs have equal job priorities.";
-		else
-			return "Job 1's job priority is greater than job 2's job priority.";
 	}
 }

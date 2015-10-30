@@ -1,5 +1,5 @@
 
-public class PrintJob implements Comparable<Integer>
+public class PrintJob implements Comparable<PrintJob>
 {
 	private String name;
 	private int userPriority;
@@ -55,11 +55,11 @@ public class PrintJob implements Comparable<Integer>
 	}
 
 	@Override
-	public int compareTo(Integer x)
+	public int compareTo(PrintJob x)
 	{
-		if (this.getJobPriority() < x)
+		if (this.getJobPriority() < x.getJobPriority())
 			return -1;
-		else if (this.getJobPriority() > x)
+		else if (this.getJobPriority() > x.getJobPriority())
 			return 1;
 		else
 			return 0;
@@ -68,8 +68,6 @@ public class PrintJob implements Comparable<Integer>
 	@Override
 	public String toString()
 	{
-		return "Name: " + getName() + ", User Priority: " 
-				+ getUserPriority() + ", Number of Pages: " + getNumPages() 
-				+ ", Job Priority: " + getJobPriority();
+		return "Name: " + getName() + ", User Priority: " + getUserPriority() + ", Number of Pages: " + getNumPages() + ", Job Priority: " + getJobPriority();
 	}
 }
